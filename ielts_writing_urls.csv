@@ -1,0 +1,36 @@
+id,group,publisher,title,url
+C01,core_policy,IELTS,IELTS Writing Band Descriptors PDF,https://ielts.org/cdn/ielts-guides/ielts-writing-band-descriptors.pdf
+C02,core_policy,IELTS,IELTS Writing Key Assessment Criteria PDF,https://ielts.org/cdn/ielts-guides/ielts-writing-key-assessment-criteria.pdf
+C06,core_policy,IELTS,IELTS Academic Writing Sample Tasks PDF,https://ielts.org/cdn/Sample-tests/ielts-academic-writing-sample-tasks-2023.pdf
+C03,test_format,IELTS,IELTS Academic Writing format,https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-writing
+C04,test_format,IELTS,IELTS General Training Writing format,https://ielts.org/take-a-test/test-types/ielts-general-training-test/ielts-general-training-format-writing
+C05,preparation,IELTS,IELTS Writing preparation resources,https://ielts.org/take-a-test/preparation-resources/writing-test-resources
+S01,official_samples,IELTS,IELTS Academic sample test questions,https://ielts.org/take-a-test/preparation-resources/sample-test-questions/academic-test
+S06,official_samples,IELTS,IELTS General Training sample test questions,https://ielts.org/take-a-test/preparation-resources/sample-test-questions/general-training-test
+A00,official_article,IELTS,IELTS Writing Band Descriptors and Key Assessment Criteria,https://ielts.org/news-and-insights/ielts-writing-band-descriptors-and-key-assessment-criteria
+A01,official_article,IELTS,10 Steps to Writing High-scoring IELTS Essays,https://ielts.org/news-and-insights/10-steps-to-writing-high-scoring-ielts-essays
+A02,official_article,IELTS,IELTS Writing Task 2 - How to understand question prompts,https://ielts.org/news-and-insights/ielts-writing-task-2-how-to-understand-ielts-question-prompts
+A03,official_article,IELTS,Preparing learners for Academic Writing Task 1,https://ielts.org/news-and-insights/preparing-learners-for-task-1-on-the-ielts-academic-writing-test
+A04,official_article,IELTS,How to teach paragraph-level cohesion,https://ielts.org/news-and-insights/how-to-teach-paragraph-level-cohesion
+A05,official_article,IELTS,How to address vocabulary in an IELTS preparation course,https://ielts.org/news-and-insights/how-to-address-vocabulary-in-an-ielts-preparation-course
+A06,official_article,IELTS,Grammar essentials - the passive voice,https://ielts.org/news-and-insights/grammar-essentials-the-passive-voice
+A07,official_article,IELTS,How to increase IELTS grammar score from Band 4 to Band 5,https://ielts.org/news-and-insights/how-to-increase-your-ielts-grammar-score-from-band-4-to-band-5
+A08,official_article,IELTS,Reach Band 5 and higher in IELTS General Training Writing,https://ielts.org/news-and-insights/reach-a-band-5-and-higher-in-ielts-general-training-writing
+A09,official_article,IELTS,How to write a semi-formal letter for IELTS General Training Writing Task 1,https://ielts.org/news-and-insights/how-to-write-a-semi-formal-letter-for-ielts-general-training-writing-task-1
+A10,official_article,IELTS,Differences between IELTS Band 6 and Band 7 for productive skills,https://ielts.org/news-and-insights/differences-between-ielts-6-and-7-for-productive-skills
+B01,partner_article,British Council,Formal vs informal English for IELTS Writing,https://takeielts.britishcouncil.org/blog/a-guide-to-formal-vs-informal-english-for-ielts-writing
+B02,discovery_hub,British Council,British Council IELTS Blog,https://takeielts.britishcouncil.org/blog
+V01,partner_article,IDP Vietnam,4 tieu chi cham IELTS Writing,https://ielts.idp.com/vietnam/about/news-and-articles/article-ielts-writing-band-descriptors
+V02,partner_article,IDP Vietnam,Tong quan cac dang IELTS Writing Task 1,https://ielts.idp.com/vietnam/about/news-and-articles/article-ielts-writing-task-1
+V03,partner_article,IDP Vietnam,IELTS Writing Task 1 - Line Graph,https://ielts.idp.com/vietnam/about/news-and-articles/article-ielts-writing-task-1-line-graph
+V04,partner_article,IDP Vietnam,IELTS Writing Task 1 - Bar Charts,https://ielts.idp.com/vietnam/about/news-and-articles/article-ielts-writing-task-1-bar-charts
+V05,partner_article,IDP Vietnam,IELTS Writing Task 1 - Maps,https://ielts.idp.com/vietnam/about/news-and-articles/article-ielts-writing-task-1-maps
+V06,partner_article,IDP Vietnam,IELTS Writing Task 1 - Process and Diagram,https://ielts.idp.com/vietnam/about/news-and-articles/article-ielts-writing-task-1-process
+V07,partner_article,IDP Vietnam,IELTS Writing Task 1 Band 9 samples,https://ielts.idp.com/vietnam/about/news-and-articles/article-ielts-writing-task-1-sample-band-9
+V08,partner_article,IDP Vietnam,Cac dang IELTS Writing Task 2,https://ielts.idp.com/vietnam/about/news-and-articles/article-ielts-writing-task-2
+V09,partner_article,IDP Vietnam,Chu de pho bien trong IELTS Writing Task 2,https://ielts.idp.com/vietnam/about/news-and-articles/article-ielts-topic-writing-task-2
+V10,partner_article,IDP Vietnam,Hieu de IELTS Writing Task 2,https://ielts.idp.com/vietnam/about/news-and-articles/article-how-to-understand-task-2-writing-questions
+V11,partner_article,IDP Vietnam,Proofreading trong IELTS Writing,https://ielts.idp.com/vietnam/about/news-and-articles/article-proofreading
+V12,discovery_hub,IDP Vietnam,IDP IELTS News and Articles hub,https://ielts.idp.com/vietnam/about/news-and-articles
+L01,legal,IELTS,IELTS copyright and trade mark statement,https://ielts.org/legal/ielts-copyright-and-trade-mark-statement
+L02,legal,IDP Vietnam,IDP legal notices,https://ielts.idp.com/vietnam/legal-notices/en-gb
