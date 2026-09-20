@@ -21,7 +21,7 @@
 
 Hai cấu hình dùng chung bộ dữ liệu chuẩn, mô hình sinh câu trả lời, mô hình đánh giá, prompt và `top_k`; chỉ khác nhau ở chiến lược truy xuất (`use_reranking`).
 
-## Điểm số tổng quan
+## Overall Scores — Điểm số tổng quan
 
 | Chỉ số             | Cấu hình A | Cấu hình B | Chênh lệch B-A |
 | ------------------- | -------: | -------: | --------: |
@@ -33,13 +33,13 @@ Hai cấu hình dùng chung bộ dữ liệu chuẩn, mô hình sinh câu trả 
 
 Các câu out_of_domain được loại khỏi phần tính trung bình ở trên (được đánh giá riêng bằng độ chính xác từ chối - refusal accuracy) để không âm thầm thưởng/phạt việc từ chối đúng. Refusal accuracy: Cấu hình A = 0.500, Cấu hình B = 0.500. Tỷ lệ trúng ngữ cảnh (context-hit rate, không dùng LLM, kiểm tra substring độc lập với RAGAS): Cấu hình A = 0.312, Cấu hình B = 0.312.
 
-## So sánh A/B
+## A/B Comparison — So sánh A/B
 
 - Cấu hình tốt hơn: Cấu hình B (hybrid + RRF). Trung bình 4 chỉ số: A=0.790 so với B=0.874 (chênh lệch +0.084), và thắng đều trên cả 4 chỉ số riêng lẻ (faithfulness +0.091, answer_relevancy -0.003 (không đáng kể), context_recall +0.125, context_precision +0.125).
 - Bằng chứng: Lần chạy đầu tiên (trước khi sửa lỗi citation-repair) cho kết quả ngược lại: A=0.774 so với B=0.449, vì 4/18 câu ở Cấu hình B bị hạ xuống mức safe refusal toàn phần (0 điểm cả 4 chỉ số) chỉ vì câu trả lời thiếu marker [Sn], dù chunk lấy về là đúng. Sau khi thêm bước "thử lại một lần với yêu cầu rõ ràng trước khi từ chối" (task10_generation.py::_generate_impl, đoạn retry citation), kết quả đảo ngược thành B thắng A rõ ràng -- đúng với kỳ vọng lý thuyết là RRF kết hợp BM25 giúp context_recall/precision tốt hơn dense-only, đặc biệt ở các câu keyword-heavy và cross-lingual. Đây là một bài học quan trọng: số liệu A/B ban đầu gần như chắc chắn sai nếu không kiểm tra từng ca thất bại thay vì chỉ nhìn trung bình -- 4 ca "0 điểm tuyệt đối" là dấu hiệu rõ ràng của lỗi ở tầng generation, không phải tầng retrieval.
 - Đánh đổi về latency/chi phí: Cấu hình A trung bình 1786 ms/câu; Cấu hình B trung bình 1718 ms/câu. Latency của Cấu hình B thấp hơn một chút (1718ms so với 1786ms/câu trung bình) -- RRF và BM25 chạy trên corpus nhỏ (272 chunk) gần như không tốn thêm chi phí đáng kể so với thời gian gọi LLM sinh câu trả lời (chiếm phần lớn latency ở cả hai cấu hình). Không có đánh đổi latency đáng kể; Cấu hình B thắng cả về chất lượng lẫn latency trên corpus này.
 
-## Các trường hợp kém nhất
+## Worst Performers — Các trường hợp kém nhất
 
 |   # | Câu hỏi | Cấu hình | Faithfulness | Relevance | Recall | Precision | Giai đoạn lỗi             | Nguyên nhân gốc |
 | --: | -------- | ------ | -----------: | --------: | -----: | --------: | -------------------------- | ---------- |
@@ -47,7 +47,7 @@ Các câu out_of_domain được loại khỏi phần tính trung bình ở trê
 | 2 | What must a Band 9 response demonstrate for coherence and cohesion in  | B | 0.750 | 0.809 | 0.000 | 1.000 | retrieval | Câu hỏi về C01 (band descriptor PDF bị markitdown làm nát cấu trúc bảng 4 cột khi convert -- xem _chunk_band_descriptor_document trong task4_chunking_indexing.py). context_recall=0.0 nghĩa là RRF không kéo đúng chunk Band 9 mong đợi về top-k, dù context_precision gần 1.0 (những gì lấy được thì liên quan). Nguyên nhân có thể: văn bản chunk band descriptor đã bị trộn cột nên embedding và BM25 đều khó khớp chính xác với câu hỏi dùng thuật ngữ "Band 9". |
 | 3 | What four criteria will examiners use to mark my IELTS essay, accordin | B | 0.600 | 0.952 | 0.500 | 1.000 | generation | Context_recall=0.5, faithfulness=0.6 -- ngữ cảnh lấy về một phần đúng (từ A01) nhưng câu trả lời của LLM có thể đã diễn giải hơi xa nội dung gốc hoặc bỏ sót một phần của 4 tiêu chí khi diễn giải, khiến bước kiểm tra NLI theo từng statement của RAGAS Faithfulness không khớp hết. |
 
-## Khuyến nghị
+## Recommendations — Khuyến nghị
 
 | Ưu tiên | Hành động | Bằng chứng từ phân tích lỗi | Tác động kỳ vọng | Cách kiểm chứng |
 | -------: | ------ | ------------------------------- | ---------------- | ------------- |
@@ -60,3 +60,28 @@ Các câu out_of_domain được loại khỏi phần tính trung bình ở trê
 | Thí nghiệm | Baseline | Chênh lệch chỉ số | Chênh lệch latency/chi phí | Kết luận |
 | ---------- | -------- | ------------: | -------------------: | ---------- |
 | chưa có | chưa có | chưa có | chưa có | chưa có |
+
+## Latest Verification
+
+Lệnh xác minh toàn bộ repository:
+
+```text
+python -m pytest -q
+```
+
+Kết quả thực tế ngày 2026-09-20:
+
+```text
+20 passed, 1 warning in 4.73s
+```
+
+## Latest Evaluation Run
+
+Kết quả đánh giá mới nhất, ghi trong `evaluation_raw.json`, có 15 case và `top_k=5`:
+
+| Configuration | Context hit rate / recall proxy | Context precision proxy |
+| --- | ---: | ---: |
+| Dense-only | 0.800000 | 0.328571 |
+| Hybrid + RRF | 0.666667 | 0.300000 |
+
+Trong lần chạy này, `faithfulness` và `answer_relevance` có trạng thái `not_measured`; không dùng số ước lượng cho hai metric này. Ba mẫu generation gồm một câu trả lời an toàn (`retrieval_source=none`) và hai mẫu cần kiểm tra thêm chất lượng citation/generation.

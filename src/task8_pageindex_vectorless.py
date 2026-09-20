@@ -81,11 +81,91 @@ def upload_documents() -> dict[str, str]:
 
 def pageindex_search(query: str, top_k: int = 5) -> list[dict]:
     """Trả về pageindex SearchResult."""
-    # TODO: Query các document IDs và parse retrieved nodes.
-    #
-    # Mỗi result cần: id, content, score, metadata, retrieval_method.
-    # Nếu API không trả score, có thể gán score giảm dần theo rank.
-    raise NotImplementedError("Implement pageindex_search")
+    if not isinstance(query, str):
+        raise TypeError("query must be a string")
+    if not isinstance(top_k, int) or isinstance(top_k, bool):
+        raise TypeError("top_k must be an integer")
+    if top_k <= 0 or not query.strip():
+        return []
+    if not PAGEINDEX_API_KEY.strip():
+        return []
+
+    try:
+        from pageindex import PageIndexClient
+    except ImportError:
+        return []
+
+    try:
+        cache = upload_documents()
+        client = PageIndexClient(api_key=PAGEINDEX_API_KEY.strip())
+    except (FileNotFoundError, RuntimeError, OSError):
+        return []
+
+    results: list[dict] = []
+    seen: set[str] = set()
+
+    for filename, doc_id in cache.items():
+        try:
+            ocr_response = client.get_ocr(doc_id, format="page")
+            pages = ocr_response.get("result", [])
+            page_text = {
+                page.get("page_index"): page.get("markdown", "")
+                for page in pages
+                if isinstance(page, dict)
+                and isinstance(page.get("page_index"), int)
+                and isinstance(page.get("markdown"), str)
+                and page.get("markdown", "").strip()
+            }
+
+            response = client.chat_completions(
+                messages=[{"role": "user", "content": query}],
+                doc_id=doc_id,
+                stream=False,
+                enable_citations=True,
+            )
+            citations = response.get("citations", [])
+            if not isinstance(citations, list):
+                continue
+
+            for citation in citations:
+                if not isinstance(citation, dict):
+                    continue
+                if citation.get("document") != filename:
+                    continue
+                page_index = citation.get("page")
+                if not isinstance(page_index, int):
+                    continue
+                content = page_text.get(page_index, "").strip()
+                if not content:
+                    continue
+
+                block_id = str(citation.get("block_id") or "page")
+                result_id = f"pageindex/{filename}::page-{page_index}::{block_id}"
+                if result_id in seen:
+                    continue
+                seen.add(result_id)
+                results.append(
+                    {
+                        "id": result_id,
+                        "content": content,
+                        "score": 1.0 / (len(results) + 1),
+                        "metadata": {
+                            "source": f"legal/{filename}",
+                            "title": Path(filename).stem.replace("_", " "),
+                            "doc_type": "legal",
+                            "url": None,
+                            "chunk_index": page_index - 1,
+                        },
+                        "retrieval_method": "pageindex",
+                    }
+                )
+                if len(results) >= top_k:
+                    return results
+        except Exception:
+            # Provider có thể tạm thời lỗi hoặc tài liệu chưa sẵn sàng.
+            continue
+
+    return results
 
 
 if __name__ == "__main__":
