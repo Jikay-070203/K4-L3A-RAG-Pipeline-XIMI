@@ -15,6 +15,7 @@ Cài đặt:
 
 import csv
 import json
+import re
 from pathlib import Path
 
 
@@ -41,6 +42,63 @@ def _header(source: dict[str, str], doc_type: str, crawled: str = "") -> str:
         f"**Document type:** {doc_type}\n\n"
         f"**Crawled:** {crawled or 'source document'}\n\n---\n\n"
     )
+
+
+def clean_article_markdown(markdown: str) -> str:
+    """Keep the article body and remove common navigation/footer boilerplate.
+
+    Crawl output from IELTS pages contains the site-wide navigation before the
+    first H1 and promotional/footer sections after the article.  This function
+    intentionally uses conservative, text-only rules so assessment content,
+    headings and lists remain available to retrieval.
+    """
+    text = markdown.replace("\r\n", "\n").replace("\r", "\n").strip()
+    heading_matches = list(re.finditer(r"(?m)^#\s+.+$", text))
+    if heading_matches:
+        writing_heading = next(
+            (match for match in heading_matches if "writing" in match.group(0).lower()),
+            heading_matches[0],
+        )
+        text = text[writing_heading.start() :]
+
+    footer_markers = (
+        "\n### Learn about the other sections of the test",
+        "\n### Prepare for your test",
+        "\nNeed help finding something?",
+        "\n©",
+    )
+    for marker in footer_markers:
+        position = text.find(marker)
+        if position >= 0:
+            text = text[:position]
+
+    cleaned_lines: list[str] = []
+    ignored_fragments = (
+        "legal & policies",
+        "sitemap",
+        "accessibility",
+        "complaints",
+        "linkedin.com",
+        "youtube.com",
+        "instagram.com",
+        "facebook.com",
+    )
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        lower = line.lower()
+        if not line or re.fullmatch(r"!?\[.*?\]\([^)]*\)", line):
+            cleaned_lines.append("")
+            continue
+        if line.startswith("!") or any(fragment in lower for fragment in ignored_fragments):
+            continue
+        cleaned_lines.append(line)
+
+    # Preserve paragraphs but collapse crawler-created blank-line noise.
+    result: list[str] = []
+    for line in cleaned_lines:
+        if line or (result and result[-1]):
+            result.append(line)
+    return "\n".join(result).strip()
 
 
 def convert_legal_docs() -> None:
@@ -75,7 +133,7 @@ def convert_news_articles() -> None:
         item_id = _document_id(path)
         if item_id not in catalog:
             raise ValueError(f"No catalog entry for {path.name}")
-        content = str(data.get("content_markdown", "")).strip()
+        content = clean_article_markdown(str(data.get("content_markdown", "")))
         if len(content) < 200:
             raise ValueError(f"Article content is too short: {path.name}")
         source = {**catalog[item_id], "title": str(data.get("title") or catalog[item_id]["title"])}
