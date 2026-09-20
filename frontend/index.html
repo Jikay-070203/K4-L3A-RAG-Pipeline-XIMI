@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IELTS RAG Assistant</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="brand">
+          <div class="brand-mark">R</div>
+          <div class="brand-text">
+            <p class="eyebrow">HĐ nhóm · Lab 6</p>
+            <h1>IELTS RAG</h1>
+          </div>
+        </div>
+        <button class="new-chat" id="new-chat">
+          <span class="plus">+</span> Cuộc trò chuyện mới
+        </button>
+      </div>
+
+      <section class="sidebar-section">
+        <p class="section-label">Cấu hình truy hồi</p>
+
+        <div class="control">
+          <div class="control-head">
+            <label for="top-k">Số chunks</label>
+            <output id="top-k-value">5</output>
+          </div>
+          <input id="top-k" type="range" min="3" max="10" value="5" />
+        </div>
+
+        <div class="control">
+          <label for="retrieval-mode">Chế độ truy hồi</label>
+          <select id="retrieval-mode">
+            <option>Hybrid + RRF</option>
+            <option>Dense only</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="sidebar-section history">
+        <p class="section-label">Lịch sử chat</p>
+        <ul class="history-list">
+          <li class="history-item active">Task 1 — tiêu chí chấm</li>
+          <li class="history-item">Cách phát triển luận điểm</li>
+          <li class="history-item">Coherence and Cohesion</li>
+        </ul>
+      </section>
+
+      <div class="sidebar-note">
+        <span class="status-dot"></span> Frontend preview · chưa nối API
+      </div>
+    </aside>
+
+    <!-- ============ WORKSPACE ============ -->
+    <section class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Trợ lý hỏi đáp tài liệu</p>
+          <h2>Hỏi về IELTS Writing</h2>
+        </div>
+        <span class="provider-badge">Gemini · RAG</span>
+      </header>
+
+      <div class="conversation" id="conversation">
+        <div class="welcome-card" id="welcome-card">
+          <p class="eyebrow">Bắt đầu với câu hỏi của bạn</p>
+          <h3>Tra cứu có căn cứ, trả lời có nguồn.</h3>
+          <p>Đặt câu hỏi về tiêu chí chấm IELTS Writing. Câu trả lời sẽ hiển thị citation và các chunks đã sử dụng.</p>
+          <div class="suggestions">
+            <button class="suggestion">Task 1 được đánh giá theo tiêu chí nào?</button>
+            <button class="suggestion">Làm thế nào để phát triển luận điểm Task 2?</button>
+          </div>
+        </div>
+      </div>
+
+      <form class="composer" id="composer">
+        <textarea id="query" rows="1" placeholder="Nhập câu hỏi về IELTS Writing... (Enter để gửi, Shift+Enter xuống dòng)"></textarea>
+        <button class="send-button" type="submit" title="Gửi (Enter)">↑</button>
+      </form>
+      <p class="disclaimer">AI chỉ trả lời dựa trên tài liệu đã lập chỉ mục. Hãy kiểm tra nguồn trước khi sử dụng.</p>
+    </section>
+
+    <!-- ============ SOURCES ============ -->
+    <aside class="sources-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Evidence</p>
+          <h2>Nguồn đã dùng</h2>
+        </div>
+        <span class="source-count" id="source-count">0</span>
+      </div>
+      <div id="sources" class="sources-empty">Nguồn sẽ xuất hiện sau khi bạn gửi câu hỏi.</div>
+    </aside>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>

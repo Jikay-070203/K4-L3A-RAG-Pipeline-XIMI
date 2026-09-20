@@ -1,0 +1,487 @@
+{
+  "generated_at": "2026-09-20T09:14:04.333527+00:00",
+  "embedding_and_generation_metrics": {
+    "faithfulness": "not_measured",
+    "answer_relevance": "not_measured"
+  },
+  "configs": [
+    {
+      "config": "dense_only",
+      "top_k": 5,
+      "case_count": 15,
+      "expected_context_hit_rate": 0.8,
+      "context_recall_proxy": 0.8,
+      "context_precision_proxy": 0.2571428571428571,
+      "rows": [
+        {
+          "index": 1,
+          "question": "IELTS Writing Task 1 và Task 2 được đánh giá theo những tiêu chí nào?",
+          "expected_context": "legal/C02_ielts_writing_key_assessment_criteria.md",
+          "retrieved_sources": [
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/A10_differences_between_ielts_band_6_and_band_7_for_productive_skills.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 13544.779199990444
+        },
+        {
+          "index": 2,
+          "question": "Bốn tiêu chí chính của IELTS Writing là gì?",
+          "expected_context": "legal/C02_ielts_writing_key_assessment_criteria.md",
+          "retrieved_sources": [
+            "news/A04_how_to_teach_paragraph_level_cohesion.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/A01_10_steps_to_writing_high_scoring_ielts_essays.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 104.76700006984174
+        },
+        {
+          "index": 3,
+          "question": "Task 1 Academic cần thể hiện overview như thế nào ở band 7?",
+          "expected_context": "legal/C01_ielts_writing_band_descriptors.md",
+          "retrieved_sources": [
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "legal/C01_ielts_writing_band_descriptors.md",
+            "news/A10_differences_between_ielts_band_6_and_band_7_for_productive_skills.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 108.34959999192506
+        },
+        {
+          "index": 4,
+          "question": "Ở General Training Task 1, thí sinh phải viết dạng bài gì?",
+          "expected_context": "news/C04_ielts_general_training_writing_format.md",
+          "retrieved_sources": [
+            "news/C04_ielts_general_training_writing_format.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 118.53699991479516
+        },
+        {
+          "index": 5,
+          "question": "IELTS General Training Writing Task 2 yêu cầu tối thiểu bao nhiêu từ?",
+          "expected_context": "news/C04_ielts_general_training_writing_format.md",
+          "retrieved_sources": [
+            "news/C04_ielts_general_training_writing_format.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/C04_ielts_general_training_writing_format.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 119.94320002850145
+        },
+        {
+          "index": 6,
+          "question": "Coherence and Cohesion đánh giá điều gì?",
+          "expected_context": "news/A04_how_to_teach_paragraph_level_cohesion.md",
+          "retrieved_sources": [
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/A04_how_to_teach_paragraph_level_cohesion.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "news/C04_ielts_general_training_writing_format.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 106.6141000483185
+        },
+        {
+          "index": 7,
+          "question": "Lexical Resource trong IELTS Writing đánh giá điều gì?",
+          "expected_context": "legal/C02_ielts_writing_key_assessment_criteria.md",
+          "retrieved_sources": [
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/A05_how_to_address_vocabulary_in_an_ielts_preparation_course.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/A01_10_steps_to_writing_high_scoring_ielts_essays.md",
+            "news/C03_ielts_academic_writing_format.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 93.01250008866191
+        },
+        {
+          "index": 8,
+          "question": "Grammatical Range and Accuracy đánh giá điều gì?",
+          "expected_context": "legal/C02_ielts_writing_key_assessment_criteria.md",
+          "retrieved_sources": [
+            "news/C03_ielts_academic_writing_format.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/A01_10_steps_to_writing_high_scoring_ielts_essays.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 120.01610000152141
+        },
+        {
+          "index": 9,
+          "question": "Band 7 Task 2 yêu cầu cách phát triển ý như thế nào?",
+          "expected_context": "legal/C01_ielts_writing_band_descriptors.md",
+          "retrieved_sources": [
+            "legal/C01_ielts_writing_band_descriptors.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 103.70019997935742
+        },
+        {
+          "index": 10,
+          "question": "Task 2 đóng góp vào điểm Writing như thế nào so với Task 1?",
+          "expected_context": "news/C03_ielts_academic_writing_format.md",
+          "retrieved_sources": [
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md"
+          ],
+          "context_hit": false,
+          "latency_ms": 104.096700088121
+        },
+        {
+          "index": 11,
+          "question": "Trong Task 2, thí sinh có thể dùng loại bằng chứng nào để hỗ trợ ý?",
+          "expected_context": "news/C04_ielts_general_training_writing_format.md",
+          "retrieved_sources": [
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/A02_ielts_writing_task_2_how_to_understand_question_prompts.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "news/C04_ielts_general_training_writing_format.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 100.70720000658184
+        },
+        {
+          "index": 12,
+          "question": "Một bài General Training Task 1 cần chú ý register và style ra sao?",
+          "expected_context": "news/C04_ielts_general_training_writing_format.md",
+          "retrieved_sources": [
+            "news/C04_ielts_general_training_writing_format.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/C03_ielts_academic_writing_format.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 102.78449999168515
+        },
+        {
+          "index": 13,
+          "question": "Các lỗi coherence và cohesion ở band cao thường có đặc điểm gì?",
+          "expected_context": "legal/C01_ielts_writing_band_descriptors.md",
+          "retrieved_sources": [
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C01_ielts_writing_band_descriptors.md",
+            "legal/C01_ielts_writing_band_descriptors.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 115.77979999128729
+        },
+        {
+          "index": 14,
+          "question": "Task 2 cần trả lời prompt theo cách nào?",
+          "expected_context": "legal/C01_ielts_writing_band_descriptors.md",
+          "retrieved_sources": [
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/A03_preparing_learners_for_academic_writing_task_1.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "news/A03_preparing_learners_for_academic_writing_task_1.md"
+          ],
+          "context_hit": false,
+          "latency_ms": 101.13319999072701
+        },
+        {
+          "index": 15,
+          "question": "Thời tiết hôm nay ở Đồng Nai thế nào?",
+          "expected_context": "out_of_domain",
+          "retrieved_sources": [
+            "news/A03_preparing_learners_for_academic_writing_task_1.md",
+            "news/A04_how_to_teach_paragraph_level_cohesion.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "news/A02_ielts_writing_task_2_how_to_understand_question_prompts.md"
+          ],
+          "context_hit": false,
+          "latency_ms": 104.1857999516651
+        }
+      ]
+    },
+    {
+      "config": "hybrid_rrf",
+      "top_k": 5,
+      "case_count": 15,
+      "expected_context_hit_rate": 0.8,
+      "context_recall_proxy": 0.8,
+      "context_precision_proxy": 0.24285714285714285,
+      "rows": [
+        {
+          "index": 1,
+          "question": "IELTS Writing Task 1 và Task 2 được đánh giá theo những tiêu chí nào?",
+          "expected_context": "legal/C02_ielts_writing_key_assessment_criteria.md",
+          "retrieved_sources": [
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C01_ielts_writing_band_descriptors.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 121.10039999242872
+        },
+        {
+          "index": 2,
+          "question": "Bốn tiêu chí chính của IELTS Writing là gì?",
+          "expected_context": "legal/C02_ielts_writing_key_assessment_criteria.md",
+          "retrieved_sources": [
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/A04_how_to_teach_paragraph_level_cohesion.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/C04_ielts_general_training_writing_format.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 99.07490003388375
+        },
+        {
+          "index": 3,
+          "question": "Task 1 Academic cần thể hiện overview như thế nào ở band 7?",
+          "expected_context": "legal/C01_ielts_writing_band_descriptors.md",
+          "retrieved_sources": [
+            "news/A10_differences_between_ielts_band_6_and_band_7_for_productive_skills.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/C03_ielts_academic_writing_format.md"
+          ],
+          "context_hit": false,
+          "latency_ms": 98.2060000533238
+        },
+        {
+          "index": 4,
+          "question": "Ở General Training Task 1, thí sinh phải viết dạng bài gì?",
+          "expected_context": "news/C04_ielts_general_training_writing_format.md",
+          "retrieved_sources": [
+            "news/C04_ielts_general_training_writing_format.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/C04_ielts_general_training_writing_format.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 106.88400000799447
+        },
+        {
+          "index": 5,
+          "question": "IELTS General Training Writing Task 2 yêu cầu tối thiểu bao nhiêu từ?",
+          "expected_context": "news/C04_ielts_general_training_writing_format.md",
+          "retrieved_sources": [
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 90.26399999856949
+        },
+        {
+          "index": 6,
+          "question": "Coherence and Cohesion đánh giá điều gì?",
+          "expected_context": "news/A04_how_to_teach_paragraph_level_cohesion.md",
+          "retrieved_sources": [
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/A04_how_to_teach_paragraph_level_cohesion.md",
+            "legal/C01_ielts_writing_band_descriptors.md",
+            "legal/C01_ielts_writing_band_descriptors.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 106.7003000061959
+        },
+        {
+          "index": 7,
+          "question": "Lexical Resource trong IELTS Writing đánh giá điều gì?",
+          "expected_context": "legal/C02_ielts_writing_key_assessment_criteria.md",
+          "retrieved_sources": [
+            "news/A05_how_to_address_vocabulary_in_an_ielts_preparation_course.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "news/A01_10_steps_to_writing_high_scoring_ielts_essays.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 93.91950001008809
+        },
+        {
+          "index": 8,
+          "question": "Grammatical Range and Accuracy đánh giá điều gì?",
+          "expected_context": "legal/C02_ielts_writing_key_assessment_criteria.md",
+          "retrieved_sources": [
+            "news/A01_10_steps_to_writing_high_scoring_ielts_essays.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/C04_ielts_general_training_writing_format.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 113.97319997195154
+        },
+        {
+          "index": 9,
+          "question": "Band 7 Task 2 yêu cầu cách phát triển ý như thế nào?",
+          "expected_context": "legal/C01_ielts_writing_band_descriptors.md",
+          "retrieved_sources": [
+            "legal/C01_ielts_writing_band_descriptors.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 108.86979999486357
+        },
+        {
+          "index": 10,
+          "question": "Task 2 đóng góp vào điểm Writing như thế nào so với Task 1?",
+          "expected_context": "news/C03_ielts_academic_writing_format.md",
+          "retrieved_sources": [
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 112.83830006141216
+        },
+        {
+          "index": 11,
+          "question": "Trong Task 2, thí sinh có thể dùng loại bằng chứng nào để hỗ trợ ý?",
+          "expected_context": "news/C04_ielts_general_training_writing_format.md",
+          "retrieved_sources": [
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "news/A02_ielts_writing_task_2_how_to_understand_question_prompts.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 120.63980009406805
+        },
+        {
+          "index": 12,
+          "question": "Một bài General Training Task 1 cần chú ý register và style ra sao?",
+          "expected_context": "news/C04_ielts_general_training_writing_format.md",
+          "retrieved_sources": [
+            "news/C04_ielts_general_training_writing_format.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 112.91869997512549
+        },
+        {
+          "index": 13,
+          "question": "Các lỗi coherence và cohesion ở band cao thường có đặc điểm gì?",
+          "expected_context": "legal/C01_ielts_writing_band_descriptors.md",
+          "retrieved_sources": [
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C01_ielts_writing_band_descriptors.md",
+            "news/A04_how_to_teach_paragraph_level_cohesion.md"
+          ],
+          "context_hit": true,
+          "latency_ms": 112.54370003007352
+        },
+        {
+          "index": 14,
+          "question": "Task 2 cần trả lời prompt theo cách nào?",
+          "expected_context": "legal/C01_ielts_writing_band_descriptors.md",
+          "retrieved_sources": [
+            "legal/C06_ielts_academic_writing_sample_tasks.md",
+            "legal/C02_ielts_writing_key_assessment_criteria.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "news/A03_preparing_learners_for_academic_writing_task_1.md",
+            "news/A03_preparing_learners_for_academic_writing_task_1.md"
+          ],
+          "context_hit": false,
+          "latency_ms": 96.67510003782809
+        },
+        {
+          "index": 15,
+          "question": "Thời tiết hôm nay ở Đồng Nai thế nào?",
+          "expected_context": "out_of_domain",
+          "retrieved_sources": [
+            "news/A03_preparing_learners_for_academic_writing_task_1.md",
+            "news/A04_how_to_teach_paragraph_level_cohesion.md",
+            "news/C04_ielts_general_training_writing_format.md",
+            "news/C03_ielts_academic_writing_format.md",
+            "news/A02_ielts_writing_task_2_how_to_understand_question_prompts.md"
+          ],
+          "context_hit": false,
+          "latency_ms": 101.61429992876947
+        }
+      ]
+    }
+  ],
+  "generation": {
+    "sample_count": 3,
+    "samples": [
+      {
+        "question": "IELTS Writing Task 1 và Task 2 được đánh giá theo những tiêu chí nào?",
+        "answer": "Dựa trên context được cung cấp, Task 1 và Task 2 của cả hai bài thi Academic và General Training Writing đều được đánh giá dựa trên các tiêu chí chính sau (áp dụng cho Task 1):\n\n* Task Achievement [1], [2]\n* Coherence and Cohesion [1]\n* Lexical Resource [1]\n* Grammatical Range and Accuracy [1]\n\n*(Lưu ý: Đối với Task 2, tiêu chí đầu tiên được gọi là Task Response (TR) [4]).*",
+        "retrieval_source": "hybrid",
+        "source_ids": [
+          "legal/C02_ielts_writing_key_assessment_criteria.md::chunk-1",
+          "legal/C06_ielts_academic_writing_sample_tasks.md::chunk-11",
+          "legal/C02_ielts_writing_key_assessment_criteria.md::chunk-3",
+          "legal/C02_ielts_writing_key_assessment_criteria.md::chunk-8",
+          "legal/C01_ielts_writing_band_descriptors.md::chunk-0"
+        ],
+        "latency_ms": 2114.6357000106946
+      },
+      {
+        "question": "Bốn tiêu chí chính của IELTS Writing là gì?",
+        "answer": "Bốn tiêu chí chính của IELTS Writing (áp dụng cho Task 1 của cả bài thi Academic và General Training) bao gồm:\n\n* Task Achievement [4]\n* Coherence and Cohesion [4] (cũng là một trong bốn tiêu chí được đánh giá trong phần thi Writing của IELTS [5])\n* Lexical Resource [4]\n* Grammatical Range and Accuracy [4]",
+        "retrieval_source": "hybrid",
+        "source_ids": [
+          "legal/C02_ielts_writing_key_assessment_criteria.md::chunk-0",
+          "news/A04_how_to_teach_paragraph_level_cohesion.md::chunk-25",
+          "news/C03_ielts_academic_writing_format.md::chunk-24",
+          "legal/C02_ielts_writing_key_assessment_criteria.md::chunk-1",
+          "news/C04_ielts_general_training_writing_format.md::chunk-25"
+        ],
+        "latency_ms": 1759.7820999799296
+      },
+      {
+        "question": "Task 1 Academic cần thể hiện overview như thế nào ở band 7?",
+        "answer": "Tôi không thể xác minh thông tin này từ nguồn hiện có.",
+        "retrieval_source": "none",
+        "source_ids": [],
+        "latency_ms": 2162.2527999570593
+      }
+    ]
+  }
+}
