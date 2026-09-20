@@ -1,39 +1,81 @@
-"""
-Task 5 — Semantic search.
+"""Task 5 - dense retrieval from the shared Chroma collection."""
 
-Embed query bằng chính hàm của Task 4, query ChromaDB và đổi cosine distance
-thành similarity. Output phải theo SearchResult, sort giảm dần và không quá top_k.
-"""
+from __future__ import annotations
 
+import math
+
+from .contracts import validate_document
 from .task4_chunking_indexing import embed_texts, get_collection
 
 
+def _result_metadata(value: object) -> dict | None:
+    if not isinstance(value, dict):
+        return None
+    metadata = dict(value)
+    if metadata.get("url") == "" or "url" not in metadata:
+        metadata["url"] = None
+    return metadata
+
+
 def semantic_search(query: str, top_k: int = 10) -> list[dict]:
-    """Trả về dense SearchResult theo score giảm dần."""
-    # TODO: Implement semantic search.
-    #
-    # query_vector = embed_texts([query])[0]
-    # response = get_collection().query(
-    #     query_embeddings=[query_vector],
-    #     n_results=top_k,
-    #     include=["documents", "metadatas", "distances"],
-    # )
-    # results = []
-    # for item_id, content, metadata, distance in zip(
-    #     response["ids"][0],
-    #     response["documents"][0],
-    #     response["metadatas"][0],
-    #     response["distances"][0],
-    # ):
-    #     results.append({
-    #         "id": item_id,
-    #         "content": content,
-    #         "score": max(0.0, 1.0 - distance),
-    #         "metadata": metadata,
-    #         "retrieval_method": "dense",
-    #     })
-    # return sorted(results, key=lambda item: item["score"], reverse=True)[:top_k]
-    raise NotImplementedError("Implement semantic_search")
+    """Return unique dense SearchResult objects sorted by cosine score."""
+    if not isinstance(query, str):
+        raise TypeError("query must be a string")
+    if not isinstance(top_k, int) or isinstance(top_k, bool):
+        raise TypeError("top_k must be an integer")
+    query = query.strip()
+    if not query or top_k <= 0:
+        return []
+
+    collection = get_collection()
+    count_method = getattr(collection, "count", None)
+    collection_size = count_method() if callable(count_method) else None
+    if collection_size == 0:
+        return []
+    n_results = min(top_k, collection_size) if isinstance(collection_size, int) else top_k
+
+    query_vector = embed_texts([query])[0]
+    response = collection.query(
+        query_embeddings=[query_vector],
+        n_results=n_results,
+        include=["documents", "metadatas", "distances"],
+    )
+    ids = (response.get("ids") or [[]])[0]
+    documents = (response.get("documents") or [[]])[0]
+    metadatas = (response.get("metadatas") or [[]])[0]
+    distances = (response.get("distances") or [[]])[0]
+
+    best_by_id: dict[str, dict] = {}
+    for item_id, content, raw_metadata, distance in zip(ids, documents, metadatas, distances):
+        metadata = _result_metadata(raw_metadata)
+        if (
+            not isinstance(item_id, str)
+            or not item_id
+            or not isinstance(content, str)
+            or not content.strip()
+        ):
+            continue
+        if metadata is None or not isinstance(distance, (int, float)) or isinstance(distance, bool):
+            continue
+        score = max(0.0, min(1.0, 1.0 - float(distance)))
+        if not math.isfinite(score):
+            continue
+        result = {
+            "id": item_id,
+            "content": content,
+            "score": score,
+            "metadata": metadata,
+            "retrieval_method": "dense",
+        }
+        try:
+            validate_document(result, require_chunk=True)
+        except ValueError:
+            continue
+        previous = best_by_id.get(item_id)
+        if previous is None or score > previous["score"]:
+            best_by_id[item_id] = result
+
+    return sorted(best_by_id.values(), key=lambda item: (-item["score"], item["id"]))[:top_k]
 
 
 if __name__ == "__main__":
